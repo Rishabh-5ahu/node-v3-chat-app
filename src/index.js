@@ -18,7 +18,7 @@ app.use(express.static(publicDirectoryPath))
 
 
 io.on('connection', (socket) => {
-    console.log('A new connection!')
+   
    
     socket.on('join',({username,room},callback)=>{
         const {user,error} = addUser({id:socket.id,username,room})

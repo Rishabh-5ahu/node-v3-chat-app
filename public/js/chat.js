@@ -35,12 +35,11 @@ const autoscroll = () => {
     }
 }
 
-socket.on('LocationMessage',(url)=>{
-    console.log(url)
+socket.on('LocationMessage',(message)=>{
     const html =Mustache.render(locationMessageTemplate,{
-        username:url.username,
-        url,
-        createdAt:moment(url.createdAt).format('h:mm a')
+        username:message.username,
+        url:message.url,
+        createdAt:moment(message.createdAt).format('h:mm a')
     })
     $messages.insertAdjacentHTML('beforeend',html)
     autoscroll()
